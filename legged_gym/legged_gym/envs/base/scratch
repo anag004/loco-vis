@@ -1,0 +1,145 @@
+keyboard_control_heading = True
+keyboard_control_xvel = True
+curriculum = False
+max_curriculum = 1.
+num_commands = 4 # default: lin_vel_x, lin_vel_y, ang_vel_yaw, heading (in heading mode ang_vel_yaw is recomputed from heading error)
+resampling_time = 3. # time before command are changed[s]
+heading_command = True # if true: compute ang vel command from heading error
+
+# Easy ranges
+class ranges:
+    lin_vel_x = [0.0, 0.7] # min max [m/s]
+    lin_vel_y = [0.0, 0.0]   # min max [m/s]
+    ang_vel_yaw = [0, 0]    # min max [rad/s]
+    heading = [-3.14, 3.14]
+
+# Easy ranges
+class max_ranges:
+    lin_vel_x = [0.0, 0.7] # min max [m/s]
+    lin_vel_y = [0.0, 0.0]   # min max [m/s]
+    ang_vel_yaw = [0, 0]    # min max [rad/s]
+    heading = [-3.14, 3.14]
+
+# ! New mount camera
+camera_config = [
+                    {
+                        "position": [0.29, 0, 0.05],
+                        "angle": 45,
+                        "position_delta": [0.02, 0.02, 0.02],
+                        "angle_delta": 3,
+                        "h_angle_delta": 3
+                    }
+                ]
+        
+        
+class depth:
+    original = (848, 480)
+    resized = (87, 58)
+    dt = 0.1
+    viz = False
+    horizontal_fov = 87
+    num_depth_frames = 1
+    clip = 1
+    scale = 1
+
+    train_config = {
+                "num_steps_per_iter": 24,
+                "num_epochs": 10000,
+                "save_interval": 100,
+                "batch_size": 512,
+                "lr": 1e-3,
+                "backbone_class": "DepthOnlyFCBackbone58x87"
+            }
+
+    invert = True
+    normalize_mean = -0.6
+    normalize_std = 0.2
+
+    crop_left = 200
+
+
+# Chin camera for GO1
+camera_config = [
+            {
+                "position": [0.2522, 0.0125, -0.06],
+                "angle": 90,
+            }
+        ]
+
+# Front camera for GO1
+camera_config = [
+            {
+                "position": [0.29, 0.0125, 0.0167],
+                "angle": 0,
+            }
+        ]
+
+class depth:
+        original = (928, 800)
+        resized = (93, 80)
+        dt = 0.1
+        viz = True
+        horizontal_fov = 119.9809
+        num_depth_frames = 1
+        clip = 1
+        scale = 1
+    
+        train_config = {
+                    "num_steps_per_iter": 24,
+                    "num_epochs": 10000,
+                    "save_interval": 100,
+                    "batch_size": 512,
+                    "lr": 1e-3,
+                    "backbone_class": "DepthOnlyFCBackbone58x87"
+                }
+    
+        invert = True
+        normalize_mean = -0.6
+        normalize_std = 0.2
+
+# Front camera
+camera_config = [
+                          {
+                              "position": [0.27, 0, 0.03],
+                              "angle": 0,
+                          }
+                      ]
+
+# Ashish camera
+camera_config = [
+                          {
+                              "position": [0.27, 0, 0.16],
+                              "angle": 53
+                          }
+                      ]
+
+class depth:
+    original = (848, 480)
+    resized = (87, 58)
+    dt = 0.1
+    viz = False
+    horizontal_fov = 87
+    num_depth_frames = 1
+    clip = 1
+    scale = 1
+
+    train_config = {
+                "num_steps_per_iter": 24,
+                "num_epochs": 10000,
+                "save_interval": 100,
+                "batch_size": 512,
+                "lr": 1e-3,
+                "backbone_class": "DepthOnlyFCBackbone58x87"
+            }
+
+    invert = True
+    normalize_mean = -0.6
+    normalize_std = 0.2
+    
+    crop_left = 200
+
+# viewer camera: (top view for viz)
+class viewer:
+    ref_env = 0
+    pos = [0.01, 4, 10]  # [m]
+    lookat = [4, 4, 0.]  # [m]
